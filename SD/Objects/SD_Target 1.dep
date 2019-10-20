@@ -1,0 +1,71 @@
+Dependencies for Project 'SD', Target 'Target 1': (DO NOT MODIFY !)
+F (.\main.c)(0x5DA3D41D)(--c99 --gnu -c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\_Target_1-IE:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IE:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="527" -D_RTE_ -DTM4C123GH6PM-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (E:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\tm4c123gh6pm.h)(0x550FB0F4)
+I (E:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm4.h)(0x5D25B3DE)
+I (E:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EF056)
+I (E:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_version.h)(0x5D25B3DE)
+I (E:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5D25B3DE)
+I (E:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_armcc.h)(0x5D25B3DE)
+I (E:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include\mpu_armv7.h)(0x5C8F70FC)
+I (E:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\system_TM4C123.h)(0x51B6B2CE)
+I (sd.h)(0x5DA3D219)
+I (uart.h)(0x5DA265C3)
+I (E:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x599EF056)
+I (E:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x599EF052)
+I (E:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EF054)
+I (E:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x599EF054)
+I (fat32.h)(0x5DA262F4)
+I (spi.h)(0x5DA262F4)
+F (.\spi.c)(0x5DA26863)(--c99 --gnu -c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\_Target_1-IE:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IE:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="527" -D_RTE_ -DTM4C123GH6PM-o .\objects\spi.o --omf_browse .\objects\spi.crf --depend .\objects\spi.d)
+I (E:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123.h)(0x530EC1BE)
+I (E:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h)(0x550FB0F4)
+I (E:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm4.h)(0x5D25B3DE)
+I (E:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EF056)
+I (E:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_version.h)(0x5D25B3DE)
+I (E:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5D25B3DE)
+I (E:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_armcc.h)(0x5D25B3DE)
+I (E:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include\mpu_armv7.h)(0x5C8F70FC)
+I (E:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\system_TM4C123.h)(0x51B6B2CE)
+F (.\SD.c)(0x5DA262F4)(--c99 --gnu -c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\_Target_1-IE:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IE:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="527" -D_RTE_ -DTM4C123GH6PM-o .\objects\sd.o --omf_browse .\objects\sd.crf --depend .\objects\sd.d)
+I (spi.h)(0x5DA262F4)
+I (E:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EF056)
+I (sd.h)(0x5DA3D219)
+I (UART.h)(0x5DA265C3)
+I (E:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x599EF056)
+I (FAT32.h)(0x5DA262F4)
+F (.\spi.h)(0x5DA262F4)()
+F (.\SD.h)(0x5DA3D219)()
+F (.\UART.c)(0x5DA265C3)(--c99 --gnu -c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\_Target_1-IE:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IE:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="527" -D_RTE_ -DTM4C123GH6PM-o .\objects\uart.o --omf_browse .\objects\uart.crf --depend .\objects\uart.d)
+I (E:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\tm4c123gh6pm.h)(0x550FB0F4)
+I (E:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm4.h)(0x5D25B3DE)
+I (E:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EF056)
+I (E:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_version.h)(0x5D25B3DE)
+I (E:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5D25B3DE)
+I (E:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_armcc.h)(0x5D25B3DE)
+I (E:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include\mpu_armv7.h)(0x5C8F70FC)
+I (E:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\system_TM4C123.h)(0x51B6B2CE)
+I (E:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EF054)
+I (E:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x599EF054)
+I (E:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x599EF052)
+I (UART.h)(0x5DA265C3)
+I (E:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x599EF056)
+F (.\UART.h)(0x5DA265C3)()
+F (.\FAT32.c)(0x5DA262F4)(--c99 --gnu -c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\_Target_1-IE:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IE:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="527" -D_RTE_ -DTM4C123GH6PM-o .\objects\fat32.o --omf_browse .\objects\fat32.crf --depend .\objects\fat32.d)
+I (E:\Keil_v5\ARM\ARMCC\include\string.h)(0x599EF054)
+I (FAT32.h)(0x5DA262F4)
+I (E:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EF056)
+I (UART.h)(0x5DA265C3)
+I (E:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x599EF056)
+I (SD.h)(0x5DA3D219)
+F (.\FAT32.h)(0x5DA262F4)()
+F (RTE\Device\TM4C123GH6PM\startup_TM4C123.s)(0x51B6B2CE)(--cpu Cortex-M4.fp --pd "__EVAL SETA 1" -g --apcs=interwork -I.\RTE\_Target_1-IE:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IE:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123--pd "__UVISION_VERSION SETA 527" --pd "_RTE_ SETA 1" --pd "TM4C123GH6PM SETA 1"--list .\listings\startup_tm4c123.lst --xref -o .\objects\startup_tm4c123.o --depend .\objects\startup_tm4c123.d)
+F (RTE\Device\TM4C123GH6PM\system_TM4C123.c)(0x550A34A2)(--c99 --gnu -c --cpu Cortex-M4.fp -D__EVAL -g -O0 --apcs=interwork --split_sections-I.\RTE\_Target_1-IE:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include-IE:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="527" -D_RTE_ -DTM4C123GH6PM-o .\objects\system_tm4c123.o --omf_browse .\objects\system_tm4c123.crf --depend .\objects\system_tm4c123.d)
+I (E:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x599EF056)
+I (E:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123.h)(0x530EC1BE)
+I (E:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\TM4C123GH6PM.h)(0x550FB0F4)
+I (E:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include\core_cm4.h)(0x5D25B3DE)
+I (E:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_version.h)(0x5D25B3DE)
+I (E:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_compiler.h)(0x5D25B3DE)
+I (E:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include\cmsis_armcc.h)(0x5D25B3DE)
+I (E:\Keil_v5\ARM\PACK\ARM\CMSIS\5.6.0\CMSIS\Core\Include\mpu_armv7.h)(0x5C8F70FC)
+I (E:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123\system_TM4C123.h)(0x51B6B2CE)
