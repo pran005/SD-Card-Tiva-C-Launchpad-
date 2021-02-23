@@ -162,7 +162,7 @@ unsigned char SD_readSingleBlock(char *inputbuffer,uint32_t startBlock)
     unsigned char response;
     uint16_t i, retry=0;
 
-    response = SD_sendCommand(READ_SINGLE_BLOCK, startBlock);							 //read a Block command
+    response = SD_sendCommand(READ_SINGLE_BLOCK, startBlock);	//read a Block command
 
     if(response != 0x00)
     {
@@ -203,9 +203,9 @@ unsigned char SD_writeSingleBlock(char *inputbuffer,uint32_t startBlock)
     unsigned char response;
     uint16_t i, retry=0;
 
-    response = SD_sendCommand(WRITE_SINGLE_BLOCK, startBlock); 				     //write a Block command
+    response = SD_sendCommand(WRITE_SINGLE_BLOCK, startBlock); 	   //write a Block command
 
-    if(response != 0x00) return response;					      //check for SD status: 0x00 - OK (No flags set)
+    if(response != 0x00) return response;			 //check for SD status: 0x00 - OK (No flags set)
 
     SPI_EnableChipSelect();
 
@@ -219,9 +219,9 @@ unsigned char SD_writeSingleBlock(char *inputbuffer,uint32_t startBlock)
 
     response = SSI_Read();
 
-    if( (response & 0x1f) != 0x05) 						//response= 0xXXX0AAA1 ; AAA='010' - data accepted
-    {                              		         			//AAA='101'-data rejected due to CRC error
-        SPI_DisableChipSelect();             					//AAA='110'-data rejected due to write error
+    if( (response & 0x1f) != 0x05) 				//response= 0xXXX0AAA1 ; AAA='010' - data accepted
+    {                              		         	//AAA='101'-data rejected due to CRC error
+        SPI_DisableChipSelect();             			//AAA='110'-data rejected due to write error
         return response;
     }
 
@@ -235,10 +235,10 @@ unsigned char SD_writeSingleBlock(char *inputbuffer,uint32_t startBlock)
     }
 
     SPI_DisableChipSelect();
-    SSI_Write(0xff);  								 //just spend 8 clock cycle delay before reasserting the CS line
-    SPI_EnableChipSelect();     						//re-asserting the CS line to verify if card is still busy
+    SSI_Write(0xff);  					  //just spend 8 clock cycle delay before reasserting the CS line
+    SPI_EnableChipSelect();     			  //re-asserting the CS line to verify if card is still busy
 
-    while(!SSI_Read()) 								//wait for SD card to complete writing and get idle
+    while(!SSI_Read()) 					//wait for SD card to complete writing and get idle
     {
         if(retry++ > 0xfffe)
         {
@@ -274,7 +274,7 @@ uint8_t init_SdCard(uint8_t *cardType)
         response = SD_sendCommand(GO_IDLE_STATE, 0);	 //send 'reset & go idle' command
         retry++;
         if(retry>0x20)
-            return SDCARD_NOT_DETECTED;  						 //time out, card not detected
+            return SDCARD_NOT_DETECTED;  		//time out, card not detected
 
     } while(response != 0x01);
 
@@ -304,14 +304,14 @@ uint8_t init_SdCard(uint8_t *cardType)
 
     do
     {
-        response = SD_sendCommand(APP_CMD,0); 									//CMD55, must be sent before sending any ACMD command
+        response = SD_sendCommand(APP_CMD,0); 			//CMD55, must be sent before sending any ACMD command
         response = SD_sendCommand(SD_SEND_OP_COND,0x40000000); //ACMD41
 
         retry++;
         if(retry>0xfe)
         {
 
-            return SDCARD_INIT_FAILED;										  //time out, card initialization failed
+            return SDCARD_INIT_FAILED;			  //time out, card initialization failed
         }
 
     }while(response != 0x00);
