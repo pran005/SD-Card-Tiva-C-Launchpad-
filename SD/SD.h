@@ -45,7 +45,7 @@
 #define ERASE_SELECTED_BLOCKS    38
 #define SD_SEND_OP_COND			       41   //ACMD
 #define APP_CMD					             55
-#define READ_OCR				             58
+#define READ_OCR                 58
 #define CRC_ON_OFF               59
 /***********************************************************************************************************/
 
