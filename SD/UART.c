@@ -154,11 +154,11 @@ uint8_t UART0_RxString(char *ptr_string)
 
         if((ch=='\r') || (ch=='\n')) 		     // Read till enter key is pressed
         {   
-		  if(len!=0)       																			  // Wait till atleast 1 char is received               
-           {                                              
-		       ptr_string[len]=0; 	 // once enter key is pressed null terminate the string and break the loop 			
+	    if(len!=0)       		   // Wait till atleast 1 char is received              
+	    {                                              
+	       ptr_string[len]=0; 	 // once enter key is pressed null terminate the string and break the loop 			
                break;  
-			}                   
+	    }                   
         }
         else if((ch=='\b') && (len!=0))
         {
