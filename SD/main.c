@@ -38,7 +38,7 @@
 #define FILE_COPY         '3'
 #define FILE_DELETE       '4'
 #define FILE_LIST         '5'
-#define MEMORY_STATS	    '6'
+#define MEMORY_STATS	  '6'
 
 
 
@@ -50,14 +50,13 @@ int main()
     fileInfo fileList;
     uint32_t totalMemory,freeMemory;
 	
-	 
-   init_UART1() ; 
-   init_UART0() ;
-    returnStatus = SD_Init(&sdcardType);
-		UART0_str("\n\r\n\r***********Welcome to Embedded Systems (EC702): Special Assignment************** \r\n\r\n");
-			UART0_str("\n\r\n\r                 SD Card Interface using FAT32 and SPI            \r\n\r\n");
-			UART0_str("\r\nBY: \n\rAditi Bhatnagar  (16BEC008) - A1 Batch\r\n");
-			UART0_str("Pranjal Shrivastava (16BEC020) - A2 Batch\r\n\r\n");
+	init_UART1() ; 
+	init_UART0() ;
+	returnStatus = SD_Init(&sdcardType);
+	UART0_str("\n\r\n\r***********Welcome to Embedded Systems (EC702): Special Assignment************** \r\n\r\n");
+	UART0_str("\n\r\n\r                 SD Card Interface using FAT32 and SPI            \r\n\r\n");
+	UART0_str("\r\nBY: \n\rAditi Bhatnagar  (16BEC008) - A1 Batch\r\n");
+	UART0_str("Pranjal Shrivastava (16BEC020) - A2 Batch\r\n\r\n");
 	
     if(returnStatus)
     {
@@ -115,7 +114,7 @@ int main()
             srcFilePtr = FILE_Open(sourceFileName,READ,&returnStatus);
             if(srcFilePtr == 0)
             {
-							UART0_str("\n\rFAILED : Couldnt open File");
+		UART0_str("\n\rFAILED : Couldnt open File");
             }
             else
             {
@@ -229,29 +228,29 @@ int main()
 
         case FILE_LIST: // File names with size
 						
-						memset(str_buff,0,20) ; 
-            while(1)
-            {
-                returnStatus = FILE_GetList(&fileList);
-                if(returnStatus != FAT32_END_OF_FILE_LIST)
-                {
-										sprintf(str_buff,"\n\r%s   %d bytes",fileList.fileName,fileList.fileSize);
-										UART0_str(str_buff) ;
-                }
-                else
-                {
-                    break;
-                }
-            }
-            break;
+			memset(str_buff,0,20) ; 
+			while(1)
+			{
+				returnStatus = FILE_GetList(&fileList);
+				if(returnStatus != FAT32_END_OF_FILE_LIST)
+				{
+					sprintf(str_buff,"\n\r%s   %d bytes",fileList.fileName,fileList.fileSize);
+					UART0_str(str_buff) ;
+				}
+				else
+				{
+					break;
+				}
+			}
+			break;
 
 
         case MEMORY_STATS: // SD CARD memory Usage in Bytes in bytes
-						memset(str_buff,0,100) ; 
-						UART0_str("\n\rMemory Stats are being calculated...Please be Patient :)");
-            FILE_GetMemoryStatics(&totalMemory,&freeMemory);
-						sprintf(str_buff,"\n\rTotal memory: %u bytes\r\nFree memory: %u bytes",totalMemory,freeMemory);
-            UART0_str(str_buff) ; 
+			  memset(str_buff,0,100) ; 
+			  UART0_str("\n\rMemory Stats are being calculated...Please be Patient :)");
+			  FILE_GetMemoryStatics(&totalMemory,&freeMemory);
+			  sprintf(str_buff,"\n\rTotal memory: %u bytes\r\nFree memory: %u bytes",totalMemory,freeMemory);
+			  UART0_str(str_buff) ; 
             break;
 
         }// End of switch
