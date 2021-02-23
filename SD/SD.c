@@ -5,10 +5,10 @@
   * @date    12-October-2019
   * @brief   Main SD Driver
   ******************************************************************************
-	*********** Information related to Fat file system ***************************
-	https://www.win.tue.nl/~aeb/linux/fs/fat/fat-1.html
-	http://www.tavi.co.uk/phobos/fat.html
- ********************************************************************************/
+  *********** Information related to Fat file system ***************************
+  https://www.win.tue.nl/~aeb/linux/fs/fat/fat-1.html
+  http://www.tavi.co.uk/phobos/fat.html
+********************************************************************************/
 
 #include "spi.h"
 #include "sd.h"
@@ -21,19 +21,19 @@ uint8_t init_SdCard(uint8_t *cardType);
 int i = 0 ; 
 
 /******************************************************* 
-	@Brief 			 : Initialize & Detect SD Card
-	
-	@retval			 : Returns the SD card initialization status.
-                 (uint8t): SDCARD_INIT_SUCCESSFUL
-													 SDCARD_NOT_DETECTED
-													 SDCARD_INIT_FAILED
-													 SDCARD_FAT_INVALID
-													 
-	@Argumemnts  : Ptr to SD Card Type :: 
-													 SDCARD_TYPE_UNKNOWN
-                           SDCARD_TYPE_STANDARD
-                           SDCARD_TYPE_HIGH_CAPACITY 
-												
+@Brief : Initialize & Detect SD Card
+
+@retval : Returns the SD card initialization status.
+	  (uint8t): SDCARD_INIT_SUCCESSFUL
+	            SDCARD_NOT_DETECTED
+		    SDCARD_INIT_FAILED
+		    SDCARD_FAT_INVALID
+
+@Argumemnts  : Ptr to SD Card Type :: 
+		   SDCARD_TYPE_UNKNOWN
+		   SDCARD_TYPE_STANDARD
+		   SDCARD_TYPE_HIGH_CAPACITY 
+
 *******************************************************/ 
 
  
@@ -58,20 +58,20 @@ uint8_t SD_Init(uint8_t *cardType)
 }
 
 /************************************************************************************* 
-	@Brief 			 : Sends a command to SD card
-	@retval			 : Returns the Response Byte from SD card (unsigned char)response byte
-	@Argumemnts  : (unsigned char)8-bit command value , (uint32_t) 32-bit command argument
-												
+@Brief : Sends a command to SD card
+@retval : Returns the Response Byte from SD card (unsigned char)response byte
+@Argumemnts  : (unsigned char)8-bit command value , (uint32_t) 32-bit command argument
 ***************************************************************************************/ 
 unsigned char SD_sendCommand(unsigned char cmd, uint32_t arg)
 {
     unsigned char response, retry=0, status;
 
 	/** @NOTE: SD card accepts byte address while SDHC accepts block address in multiples of 512
-						 so, if it's SD card we need to convert block address into corresponding byte address by
-						 multipying it with 512. which is equivalent to shifting it left 9 times
-						 following 'if' statement does that
-  **/
+	 	   so, if it's SD card we need to convert block address into corresponding byte address by
+		   multipying it with 512. which is equivalent to shifting it left 9 times following 
+		   'if' statement does that
+  	**/
+	
     if(V_SdHighcapacityFlag_u8 == 0)
     {
         if(cmd == READ_SINGLE_BLOCK     ||
@@ -97,12 +97,12 @@ unsigned char SD_sendCommand(unsigned char cmd, uint32_t arg)
 
 
     if(cmd == SEND_IF_COND)	 //it is compulsory to send correct CRC for CMD8 (CRC=0x87) & CMD0 (CRC=0x95)
-        SSI_Write(0x87);    //for remaining commands, CRC is ignored in SPI mode
+        SSI_Write(0x87);        //for remaining commands, CRC is ignored in SPI mode
     else
         SSI_Write(0x95);
 
     while((response = SSI_Read()) == 0xff)	 //wait response
-        if(retry++ > 0xfe) break; 					//time out error
+        if(retry++ > 0xfe) break; 		//time out error
 
     if(response == 0x00 && cmd == 58)  		//checking response of CMD58
     {
@@ -116,14 +116,14 @@ unsigned char SD_sendCommand(unsigned char cmd, uint32_t arg)
             V_SdHighcapacityFlag_u8 = 0;
         }
 
-        SSI_Read(); 	//remaining 3 bytes of the OCR register are ignored here
-        SSI_Read();  //one can use these bytes to check power supply limits of SD
+        SSI_Read(); 	       //remaining 3 bytes of the OCR register are ignored here
+        SSI_Read();  	      //one can use these bytes to check power supply limits of SD
         SSI_Read();
     }
 
     SSI_Read(); //extra 8 CLK
     SPI_DisableChipSelect();
-		i = response ; 
+    i = response ; 
     return response; //return state
 }
 
@@ -145,7 +145,7 @@ unsigned char SD_erase (uint32_t startBlock, uint32_t totalBlocks)
     if(response != 0x00)
         return response;
 
-    response = SD_sendCommand(ERASE_SELECTED_BLOCKS, 0);												 //erase all selected blocks
+    response = SD_sendCommand(ERASE_SELECTED_BLOCKS, 0);		//erase all selected blocks
     if(response != 0x00)
         return response;
 
@@ -153,10 +153,9 @@ unsigned char SD_erase (uint32_t startBlock, uint32_t totalBlocks)
 }
 
 /************************************************************************************* 
-	@Brief 			 : Read a single block from SD card
-	@retval			 : (unsigned char) will be 0 if no error, else response byte
-	@Argumemnts  : None
-												
+@Brief 	 : Read a single block from SD card
+@retval	 : (unsigned char) will be 0 if no error, else response byte
+@Argumemnts  : None
 ***************************************************************************************/ 
 unsigned char SD_readSingleBlock(char *inputbuffer,uint32_t startBlock)
 {
@@ -195,10 +194,9 @@ unsigned char SD_readSingleBlock(char *inputbuffer,uint32_t startBlock)
 }
 
 /************************************************************************************* 
-	@Brief 			 : Write to a single block from SD card
-	@retval			 : (unsigned char) will be 0 if no error, else response byte
-	@Argumemnts  : None
-												
+@Brief  : Write to a single block from SD card
+@retval : (unsigned char) will be 0 if no error, else response byte
+@Argumemnts  : None
 ***************************************************************************************/ 
 unsigned char SD_writeSingleBlock(char *inputbuffer,uint32_t startBlock)
 {
@@ -207,7 +205,7 @@ unsigned char SD_writeSingleBlock(char *inputbuffer,uint32_t startBlock)
 
     response = SD_sendCommand(WRITE_SINGLE_BLOCK, startBlock); 				     //write a Block command
 
-    if(response != 0x00) return response;														      //check for SD status: 0x00 - OK (No flags set)
+    if(response != 0x00) return response;					      //check for SD status: 0x00 - OK (No flags set)
 
     SPI_EnableChipSelect();
 
@@ -221,9 +219,9 @@ unsigned char SD_writeSingleBlock(char *inputbuffer,uint32_t startBlock)
 
     response = SSI_Read();
 
-    if( (response & 0x1f) != 0x05) 															//response= 0xXXX0AAA1 ; AAA='010' - data accepted
-    {                              														 //AAA='101'-data rejected due to CRC error
-        SPI_DisableChipSelect();             								  //AAA='110'-data rejected due to write error
+    if( (response & 0x1f) != 0x05) 						//response= 0xXXX0AAA1 ; AAA='010' - data accepted
+    {                              		         			//AAA='101'-data rejected due to CRC error
+        SPI_DisableChipSelect();             					//AAA='110'-data rejected due to write error
         return response;
     }
 
@@ -237,10 +235,10 @@ unsigned char SD_writeSingleBlock(char *inputbuffer,uint32_t startBlock)
     }
 
     SPI_DisableChipSelect();
-    SSI_Write(0xff);  															 //just spend 8 clock cycle delay before reasserting the CS line
-    SPI_EnableChipSelect();     								    //re-asserting the CS line to verify if card is still busy
+    SSI_Write(0xff);  								 //just spend 8 clock cycle delay before reasserting the CS line
+    SPI_EnableChipSelect();     						//re-asserting the CS line to verify if card is still busy
 
-    while(!SSI_Read()) 														 //wait for SD card to complete writing and get idle
+    while(!SSI_Read()) 								//wait for SD card to complete writing and get idle
     {
         if(retry++ > 0xfffe)
         {
@@ -255,10 +253,9 @@ unsigned char SD_writeSingleBlock(char *inputbuffer,uint32_t startBlock)
 }
 
 /************************************************************************************* 
-	@Brief 			 : Initialize SD card
-	@retval			 : Ptr to Card Type holding variable 
-	@Argumemnts  : SD Card Return Status if Failed, Else Response byte
-												
+@Brief : Initialize SD card
+@retval : Ptr to Card Type holding variable 
+@Argumemnts  : SD Card Return Status if Failed, Else Response byte
 ***************************************************************************************/ 
 uint8_t init_SdCard(uint8_t *cardType)
 {
@@ -266,8 +263,8 @@ uint8_t init_SdCard(uint8_t *cardType)
     uint16_t retry=0 ;
 
 		
-    for(i=0;i<10;i++)
-        SSI_Write(0xff);  										 //80 clock pulses spent before sending the first command
+    for(i=0;i<10;i++) 
+        SSI_Write(0xff); 	 //80 clock pulses spent before sending the first command
 
 
     SPI_EnableChipSelect();
@@ -287,8 +284,8 @@ uint8_t init_SdCard(uint8_t *cardType)
 
     retry = 0;
 
-    sd_version = 2; 											// Default set to SD compliance with ver2.x;
-																				 // This may change after checking the next command
+    sd_version = 2; 		// Default set to SD compliance with ver2.x;
+				// This may change after checking the next command
     do
     {
         response = SD_sendCommand(SEND_IF_COND,0x000001AA); //Check power supply status, mendatory for SDHC card
