@@ -4,7 +4,7 @@
  * File:   fat32.c
  * Version: 23.2
  * Author: CC Dharmani, e-chan
- * Last Modificatied on 12/10/19 by Pranjal Shrivastava, Aditi  Bhatnagar   
+ * Last Modified on 12/10/19 by Pranjal Shrivastava, Aditi  Bhatnagar   
  * Website: www.dharmanitech.com, http://elm-chan.org/fsw/ff/00index_e.html
  * Description: File contains the functions to read and write data from file
 
